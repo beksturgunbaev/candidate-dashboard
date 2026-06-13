@@ -1,15 +1,21 @@
-import { defineConfig } from "vite";
+// Изменяем импорт defineConfig: берем его из vitest/config
+import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
+// Теперь TypeScript знает, что свойство "test" здесь абсолютно легально
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ["react-window"], // Принудительно включаем в оптимизацию
+    include: ["react-window"],
   },
   resolve: {
     alias: {
       "@": "/src",
     },
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    include: ["**/*.{test,spec}.{ts,tsx}"],
   },
 });
