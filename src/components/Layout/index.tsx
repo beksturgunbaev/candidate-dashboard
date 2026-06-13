@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 
 const Layout = () => {
     return (
-        <div className="flex gap-4">
+        <div className="flex">
             <Sidebar />
             <Outlet />
         </div>
