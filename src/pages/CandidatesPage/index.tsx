@@ -30,7 +30,7 @@ const CandidatesPage = () => {
 
     return (
         <div className="space-y-6 p-4 w-full">
-            <div className="flex items-center justify-between">
+            <div className="md:flex items-center justify-between">
                 <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Кандидаты</h1>
                 <span className="text-sm text-gray-500">Найдено результатов: {totalCount}</span>
             </div>
@@ -71,7 +71,7 @@ const CandidatesPage = () => {
                     </div>
                 </div>
                 {/* УПРАВЛЕНИЕ МУТАЦИЕЙ ДАННЫХ И ОПТИМИЗАЦИЕЙ (Задание 5) */}
-                <div className="flex flex-wrap items-center gap-4 border-t lg:border-t-0 lg:border-l pt-3 lg:pt-0 lg:pl-4 border-gray-200">
+                <div className="flex flex-col md:flex-wrap md:items-center gap-4 border-t lg:border-t-0 lg:border-l pt-3 lg:pt-0 lg:pl-4 border-gray-200">
                     <select
                         value={isLargeMode ? 'large' : 'small'}
                         onChange={(e) => handleDatasetToggle(e.target.value === 'large')}
@@ -164,7 +164,7 @@ const CandidatesPage = () => {
                                     <th className="py-3 px-5 text-right">Вердикт</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100 text-sm">
+                            <tbody className="divide-y divide-gray-100 text-sm overflow-x-auto">
                                 {candidates.map((c) => (
                                     <tr
                                         key={c.id}
