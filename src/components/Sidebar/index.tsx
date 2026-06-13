@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
     return (
-        <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-gray-200 flex flex-col md:h-screen sticky top-0 z-40">
+        <aside className="md:flex hidden w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-gray-200 flex-col md:h-screen sticky top-0 z-40">
             <div className="h-16 items-center px-6 border-b border-gray-100 flex">
                 <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-lg shadow-sm shadow-blue-200">

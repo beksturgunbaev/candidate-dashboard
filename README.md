@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# Candidate Dashboard 📊
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современная панель управления (Dashboard) для рекрутеров и HR-специалистов, разработанная на **React** и **TypeScript** с использованием сборщика **Vite**. Приложение позволяет эффективно управлять списком кандидатов, фильтровать, искать, просматривать детальную информацию и менять их статусы в реальном времени с использованием оптимистичного обновления UI.
 
-Currently, two official plugins are available:
+Проект построен по методологии **Feature-Sliced Design (FSD)**, что гарантирует масштабируемость, контролируемые зависимости и чистоту кодовой базы.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Стек технологий
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend:** React 18 / 19, TypeScript
+- **Сборщик:** Vite (с кастомной ESM-оптимизацией зависимостей)
+- **Стилизация:** Tailwind CSS
+- **Стейт-менеджер:** Zustand
+- **Виртуализация:** `react-virtuoso` (современная альтернатива `react-window`)
+- **Роутинг:** React Router DOM v6
+- **Уведомления:** `react-hot-toast`
+- **Тестирование:** Vitest + React Testing Library + JSDOM
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🏛 Архитектура проекта (FSD)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Код разделен на изолированные слои и слайсы в соответствии с методологией Feature-Sliced Design:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```text
+├── tests/                    # Интеграционные и unit-тесты (вынесены отдельно)
+├── src/
+│   ├── app/                  # Инициализация приложения (роуты, стили)
+│   ├── pages/                # Страницы приложения
+│   │   ├── CandidatesPage/   # Список кандидатов (Модель + UI разделены)
+│   │   └── CandidateDetailPage/ # Детальная карточка кандидата
+│   │   ├── helpers/          # Чистые функции (цветовая индикация вердиктов)
+│   │   └── types/            # Общие TypeScript интерфейсы
+│   ├── store/                # Глобальный Zustand-стор (Бизнес-логика)
+│   └── services/             # Мок-API (Имитация сетевых запросов)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+################## Запуск проекта
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Установка зависимостей
+^Bash
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+2. Запуск локального сервера разработки (Vite)
+
+^Bash
+npm run dev 
+
+
+3. Запуск тестов (Vitest)
+^Bash
+npm run test
 ```

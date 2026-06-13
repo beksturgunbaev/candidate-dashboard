@@ -35,7 +35,7 @@ const CandidatesPage = () => {
                 <span className="text-sm text-gray-500">Найдено результатов: {totalCount}</span>
             </div>
 
-            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col lg:flex-row lg:items-center gap-4">
+            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col xl:flex-row xl:items-center gap-4">
                 <div className="flex-1 relative">
                     <input
                         type="text"
@@ -46,30 +46,30 @@ const CandidatesPage = () => {
                     />
                     <span className="absolute left-3 top-2.5 text-gray-400">🔍</span>
                 </div>
-
-                <div className="flex flex-wrap items-center gap-1.5">
-                    {VERDICTS.map((v) => (
-                        <button
-                            key={v}
-                            onClick={() => handleVerdictChange(v)}
-                            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${currentVerdict === v ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                                }`}
+                <div className="flex items-center justify-between xl:justify-start gap-4">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                        {VERDICTS.map((v) => (
+                            <button
+                                key={v}
+                                onClick={() => handleVerdictChange(v)}
+                                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${currentVerdict === v ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                    }`}
+                            >
+                                {v}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <select
+                            value={currentSort}
+                            onChange={(e) => handleSortChange(e.target.value)}
+                            className="bg-gray-50 border border-gray-300 rounded-lg text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
-                            {v}
-                        </button>
-                    ))}
+                            <option value="name">По имени</option>
+                            <option value="exp">По опыту</option>
+                        </select>
+                    </div>
                 </div>
-                <div className="flex items-center gap-2">
-                    <select
-                        value={currentSort}
-                        onChange={(e) => handleSortChange(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 rounded-lg text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                        <option value="name">По имени</option>
-                        <option value="exp">По опыту</option>
-                    </select>
-                </div>
-
                 {/* УПРАВЛЕНИЕ МУТАЦИЕЙ ДАННЫХ И ОПТИМИЗАЦИЕЙ (Задание 5) */}
                 <div className="flex flex-wrap items-center gap-4 border-t lg:border-t-0 lg:border-l pt-3 lg:pt-0 lg:pl-4 border-gray-200">
                     <select
