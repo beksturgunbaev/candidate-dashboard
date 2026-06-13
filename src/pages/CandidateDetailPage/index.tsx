@@ -2,6 +2,7 @@ import React from 'react';
 import { useCandidateDetailModel } from './model';
 import { CriteriaBlock } from './components/CriteriaBlock';
 import { CandidateSidebar } from './components/CandidateSidebar';
+import { StatusSelector } from './components/StatusSelector';
 
 const CandidateDetailPage: React.FC = () => {
     const {
@@ -108,7 +109,10 @@ const CandidateDetailPage: React.FC = () => {
                         </div>
                     </section>
                 </div>
-                <CandidateSidebar candidate={candidate} />
+                <div className="space-y-6">
+                    <StatusSelector candidateId={candidate.id} currentStatus={candidate.status} />
+                    <CandidateSidebar candidate={candidate} />
+                </div>
             </div>
         </div>
     );
